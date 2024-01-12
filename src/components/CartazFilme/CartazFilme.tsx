@@ -4,7 +4,7 @@ interface Props{
 
 function CartazFilme({imagem_cartaz}:Props) {
   return (
-    <div className="w-80 min-w-80"><img src={imagem_cartaz} width={"100%"} alt="Descrição" /></div>
+    <div className='w-80 min-w-80'><img className="rounded-md" src={imagem_cartaz} width={"100%"} alt="Descrição" /></div>
   )
 }
 
