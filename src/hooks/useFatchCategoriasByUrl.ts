@@ -1,16 +1,16 @@
+// useFetchFilme.ts
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { SubCategoriaObject } from "../types";
+import { CategoriaObject } from "../types";
 
-const useFetchGruposFilmes = (id: number) => {
-    const [data, setData] = useState<SubCategoriaObject[] | null>(null);
+const useFetchCategoriasByUrl = (url_categoria: string) => {
+    const [data, setData] = useState<CategoriaObject | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8001/api/categoria/${id}/sub_categorias/`)
-
+            .get(`${url_categoria}`)
             .then((response) => {
                 setData(response.data);
                 setError(null);
@@ -20,9 +20,9 @@ const useFetchGruposFilmes = (id: number) => {
                 setData(null);
             })
             .finally(() => setLoading(false));
-    }, [id]);
+    }, []);
 
     return { data, loading, error };
 };
 
-export default useFetchGruposFilmes;
+export default useFetchCategoriasByUrl;
