@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { SubCategoriaObject } from "../types";
+import { GrupoObject } from "../types";
 
-const useFetchGruposFilmes = (id: number) => {
-    const [data, setData] = useState<SubCategoriaObject[] | null>(null);
+const useFetchGrupos = () => {
+    const [data, setData] = useState<GrupoObject[] | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         axios
-            .get(`http://localhost:8001/api/categoria/${id}/sub_categorias/`)
+            .get(`http://localhost:8001/api/grupo/`)
 
             .then((response) => {
                 setData(response.data);
@@ -20,9 +20,9 @@ const useFetchGruposFilmes = (id: number) => {
                 setData(null);
             })
             .finally(() => setLoading(false));
-    }, [id]);
+    }, []);
 
     return { data, loading, error };
 };
 
-export default useFetchGruposFilmes;
+export default useFetchGrupos;

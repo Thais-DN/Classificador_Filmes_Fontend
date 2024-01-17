@@ -1,27 +1,28 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import { SubCategoriaObject } from '../types';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { SubCategoriaObject } from "../types";
 
 const useFetchSubCategorias = (id: number) => {
-  const [data, setData] = useState<SubCategoriaObject[]|null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+    const [data, setData] = useState<SubCategoriaObject[] | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    axios.get(`http://localhost:8001/api/categoria/${id}/sub_categorias/`)
-    
-      .then(response => {
-        setData(response.data);
-        setError(null);
-      })
-      .catch(err => {
-        setError(err);
-        setData(null);
-      })
-      .finally(() => setLoading(false));
-  }, [id]);
+    useEffect(() => {
+        axios
+            .get(`http://localhost:8001/api/categoria/${id}/sub_categorias/`)
 
-  return { data, loading, error };
-}
+            .then((response) => {
+                setData(response.data);
+                setError(null);
+            })
+            .catch((err) => {
+                setError(err);
+                setData(null);
+            })
+            .finally(() => setLoading(false));
+    }, [id]);
+
+    return { data, loading, error };
+};
 
 export default useFetchSubCategorias;

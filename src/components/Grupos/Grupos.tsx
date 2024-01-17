@@ -1,9 +1,11 @@
-import React from 'react'
+import CardGrupo from "../CardGrupo/CardGrupo";
 
 function Grupos() {
-  return (
-    <div>GrupoFilmes</div>
-  )
+    return (
+        <div>
+            <CardGrupo />
+        </div>
+    );
 }
 
-export default Grupos
+export default Grupos;
