@@ -1,5 +1,6 @@
 import CardGrupo from "../components/CardGrupo/CardGrupo";
 import useFetchGrupos from "../hooks/useFetchGrupos";
+import mickey from "../../public/images/mickey.png";
 
 function GruposFilmes() {
     const { data: grupos, error, loading } = useFetchGrupos();
@@ -11,8 +12,17 @@ function GruposFilmes() {
     if (error) {
         return <div>{error}</div>;
     }
+
+    const fundoMickey = {
+        backgroundImage: `url(${mickey})`,
+        backgroundSize: "cover", // Ajuste conforme necessário
+        backgroundPosition: "center", // Ajuste conforme necessário
+        minHeight: "100vh", // Garante que o fundo cobre toda a altura da tela
+        // Outras propriedades de estilo, se necessário
+    };
+
     return (
-        <>
+        <div style={fundoMickey}>
             <div className="flex items-center w-full justify-center p-5">
                 <div className="flex border w-[30%] border-purple-200 rounded">
                     <input
@@ -30,7 +40,7 @@ function GruposFilmes() {
                     return <CardGrupo grupo={grupo} key={index} />;
                 })}
             </div>
-        </>
+        </div>
     );
 }
 
