@@ -1,6 +1,7 @@
 import CardGrupo from "../components/CardGrupo/CardGrupo";
 import useFetchGrupos from "../hooks/useFetchGrupos";
 import mickey from "../../public/images/mickey.png";
+import Search from "../components/Search/Search";
 
 function GruposFilmes() {
     const { data: grupos, error, loading } = useFetchGrupos();
@@ -23,7 +24,8 @@ function GruposFilmes() {
 
     return (
         <div style={fundoMickey}>
-            <div className="flex items-center w-full justify-center p-5">
+            <Search />
+            {/* <div className="flex items-center w-full justify-center p-5">
                 <div className="flex border w-[30%] border-purple-200 rounded">
                     <input
                         type="text"
@@ -34,8 +36,8 @@ function GruposFilmes() {
                         Buscar
                     </button>
                 </div>
-            </div>
-            <div className="flex justify-center flex-col gap-16 px-2 py-10 lg:p-10 lg:flex-row lg:flex-wrap">
+            </div> */}
+            <div className="grid justify-center grid-cols-1 gap-16 px-2 py-10 md:p-10 md:grid-cols-2 xl:grid-cols-3">
                 {grupos?.map((grupo, index) => {
                     return <CardGrupo grupo={grupo} key={index} />;
                 })}
