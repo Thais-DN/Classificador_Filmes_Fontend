@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import useFetchCategoriasByUrl from "../../hooks/useFatchCategoriasByUrl";
 import { GrupoObject } from "../../types";
+import Personagem from "../Personagem";
 
 interface Props {
     grupo: GrupoObject;
@@ -21,10 +23,8 @@ function CardGrupo({ grupo }: Props) {
     }
 
     return (
-        // Posicionamento relativo no container para a posição absoluta da imagem funcionar corretamente
-
-        <a
-            href="#"
+        <Link
+            to={`/filmes/${grupo.id}`}
             className="relative col-span-1 min-h-[200px] flex justify-start items-center p-2 rounded-xl bg-blue-300  bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-slate-600"
         >
             <div className="lg:hidden flex flex-col justify-start items-start gap-4 px-5 z-10">
@@ -39,12 +39,8 @@ function CardGrupo({ grupo }: Props) {
                 <span>{categorias?.nome} </span>
             </div>
 
-            <img
-                className="absolute -top-8 -bottom-8 right-0  max-h-[250px] z-0"
-                src={grupo.imagem}
-                alt={grupo.nome}
-            />
-        </a>
+            <Personagem grupo={grupo} />
+        </Link>
     );
 }
 
