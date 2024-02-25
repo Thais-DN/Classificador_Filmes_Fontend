@@ -7,7 +7,6 @@ const Search = () => {
 
     const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Aqui você pode usar os dados da pesquisa como necessário
         console.log(data);
     };
 
@@ -15,18 +14,18 @@ const Search = () => {
         <div className="flex items-center w-full justify-center p-5">
             <form
                 onSubmit={handleSearch}
-                className="flex border w-[30%] border-purple-200 rounded"
+                className="flex gap-2 w-4/5 border-purple-200 rounded"
             >
                 <input
                     type="text"
-                    className="block w-full px-4 py-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                    className="block w-full px-4 py-2 text-slate-950 bg-slate-00 border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40 placeholder:text-slate-700"
                     placeholder="Busque sua animação..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <button
                     type="submit"
-                    className="px-4 text-white bg-purple-600 border-l rounded "
+                    className="px-4 text-slate-100 bg-slate-900 hover:bg-slate-700 border-l rounded "
                 >
                     Buscar
                 </button>
